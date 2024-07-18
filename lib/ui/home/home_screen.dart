@@ -3,6 +3,7 @@ import 'package:news_app/ui/home/categories_fragment/categories_fragment.dart';
 import 'package:news_app/ui/home/categories_fragment/category_details.dart';
 import 'package:news_app/ui/home/home_drawer.dart';
 import 'package:news_app/ui/home/settings_fragment/settings_fragment.dart';
+import 'package:news_app/ui/search_screen.dart';
 import 'package:news_app/ui/widgets/category_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -37,6 +38,16 @@ class _HomeScreenState extends State<HomeScreen> {
           title: Text(
             'Route News App',
           ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 12.0),
+              child: IconButton(
+                  onPressed: () {
+                    showSearch(context: context, delegate: SearchScreen());
+                  },
+                  icon: Icon(Icons.search)),
+            )
+          ],
         ),
         drawer: HomeDrawer(
           onDrawerItemClicked: onDrawerItemClicked,

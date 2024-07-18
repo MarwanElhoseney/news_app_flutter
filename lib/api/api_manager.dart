@@ -33,6 +33,17 @@ class ApiManager {
     NewsResponse newsResponse = NewsResponse.fromJson(json);
     return newsResponse;
   }
+
+  static Future<NewsResponse> getSearchNews(String qyery) async {
+    //GET https://newsapi.org/v2/top-headlines?country=us&apiKey=be69a84c535c43928fdad67c7cd21548
+
+    var url =
+        Uri.https(baseUrl, '/v2/everything', {'apiKey': apiKey, "q": qyery});
+    var response = await http.get(url);
+    var json = jsonDecode(response.body);
+    NewsResponse newsResponse = NewsResponse.fromJson(json);
+    return newsResponse;
+  }
 }
 
 //https://newsapi.org/v2/top-headlines/sources?apiKey=API_KEY
