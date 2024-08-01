@@ -1,19 +1,30 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app/api/api_manager.dart';
-import 'package:news_app/api/model/sources_response/Source.dart';
+import 'package:injectable/injectable.dart';
+import 'package:news_app/data/api/api_manager.dart';
+import 'package:news_app/data/api/model/sources_response/Source.dart';
+import 'package:news_app/data/data_source_contract/news_source_datasource.dart';
+import 'package:news_app/data/data_source_impl/news_source_data_source_impl.dart';
+import 'package:news_app/data/repository_impl/news_source_repository_impl.dart';
+import 'package:news_app/repository_contract/news_source_repository.dart';
 
+@injectable
 class CategoryDetailsViewModel extends Cubit<CategoryDetailsState> {
-  CategoryDetailsViewModel() : super(LoadingState(message: 'Loading...'));
+  late NewsSourceRepository newsSourceRepository;
+
+  @factoryMethod
+  CategoryDetailsViewModel({required this.newsSourceRepository})
+      : super(LoadingState(message: 'Loading...'));
 
   void loadSources(String catId) async {
     emit(LoadingState(message: 'Loading....'));
     try {
-      var response = await ApiManager.getSources(catId);
-      if (response.status == 'error') {
-        emit(ErrorState(errorMessage: response.message));
-      } else {
-        emit(SuccessState(sourcesList: response.sources));
-      }
+      var sourcesList = await newsSourceRepository.getSources(catId);
+      emit(SuccessState(sourcesList: sourcesList));
+      // if (response.status == 'error') {
+      //   emit(ErrorState(errorMessage: response.message));
+      // } else {
+      //   emit(SuccessState(sourcesList: response.sources));
+      // }
     } catch (e) {
       emit(ErrorState(errorMessage: e.toString()));
     }

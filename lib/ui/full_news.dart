@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:news_app/api/model/news_response/news.dart';
+import 'package:news_app/data/api/model/news_response/news.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FullNews extends StatelessWidget {
@@ -49,18 +49,17 @@ class FullNews extends StatelessWidget {
                   textAlign: TextAlign.right,
                 )),
             Text(news.content ?? ""),
-            InkWell(
-              onTap: () {
-                _launchUrl(news.url ?? "");
-              },
-              child: SizedBox(
-                height: 300,
+            SizedBox(
+              height: 300,
               ),
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text("View full article"),
+                InkWell(
+                    onTap: () {
+                      _launchUrl(news.url ?? "");
+                    },
+                    child: Text("View full article")),
                 Icon(Icons.arrow_right_sharp)
               ],
             )

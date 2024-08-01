@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/api/model/sources_response/Source.dart';
+import 'package:news_app/data/api/model/sources_response/Source.dart';
 
 class SourceItemWidget extends StatelessWidget {
   Source source;

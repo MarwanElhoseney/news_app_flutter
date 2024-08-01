@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/api/api_manager.dart';
+import 'package:news_app/data/api/api_manager.dart';
 import 'package:news_app/ui/home/news_list_widget/news_item_widget.dart';
 
 class SearchScreen extends SearchDelegate {
