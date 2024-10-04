@@ -41,8 +41,11 @@ class SearchScreen extends SearchDelegate {
           );
         }
         var article = snapshot.data?.articles ?? [];
-        return ListView.builder(
+        return ListView.separated(
           itemBuilder: (context, index) => NewsItemWidget(news: article[index]),
+          separatorBuilder: (context, index) => SizedBox(
+            height: 20,
+          ),
           itemCount: article.length,
         );
       },
@@ -68,8 +71,11 @@ class SearchScreen extends SearchDelegate {
           );
         }
         var article = snapshot.data?.articles ?? [];
-        return ListView.builder(
+        return ListView.separated(
           itemBuilder: (context, index) => NewsItemWidget(news: article[index]),
+          separatorBuilder: (context, index) => SizedBox(
+            height: 20,
+          ),
           itemCount: article.length,
         );
       },
