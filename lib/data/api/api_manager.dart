@@ -35,11 +35,11 @@ class ApiManager {
     return newsResponse;
   }
 
-  static Future<NewsResponse> getSearchNews(String query) async {
+  static Future<NewsResponse> getSearchNews(String quary) async {
     //GET https://newsapi.org/v2/top-headlines?country=us&apiKey=be69a84c535c43928fdad67c7cd21548
 
     var url =
-        Uri.https(baseUrl, '/v2/everything', {'apiKey': apiKey, "q": query});
+        Uri.https(baseUrl, '/v2/everything', {'apiKey': apiKey, "q": quary});
     var response = await http.get(url);
     var json = jsonDecode(response.body);
     NewsResponse newsResponse = NewsResponse.fromJson(json);
