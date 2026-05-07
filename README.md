@@ -26,6 +26,11 @@ The app allows users to:
 
 ---
 
+# App Demo 🔥
+https://github.com/user-attachments/assets/98eaf579-b29e-4ee8-b35f-73a2f225261e
+
+---
+
 # Tech Stack 🚀
 
 - Flutter
@@ -218,10 +223,7 @@ CachedNetworkImage
 - Local Database
 - Better Search Experience
 
----
-# App Demo 🔥
 
----
 
 # Author 👨‍💻
 
